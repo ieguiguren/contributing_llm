@@ -4,27 +4,33 @@
 
 ## The Problem
 
-Last week I got a PR merged into a Rust project without knowing Rust. Some reactions were predictable: *"AI-generated code is garbage."*
+Anyone can open a PR today. That's always been true — but the barrier just dropped to zero.
 
-They're right — if there's no process.
+With Claude Code, Copilot, or Cursor, generating a plausible-looking fix takes minutes. No deep understanding required. The diff compiles. The description sounds right. And now it's sitting in your review queue.
 
-The problem isn't that AI generates bad code. The problem is that open-source repositories aren't prepared for this new type of contribution.
+The usual reaction from maintainers is: *"AI-generated code is garbage."*
 
-Today, anyone can generate a fix with Claude Code, Copilot, or Cursor. But if a repo doesn't define what it demands from code — regardless of where it came from — the maintainer becomes the only quality filter. **And that doesn't scale.**
+That's not the real problem.
 
-Vibe coding has shifted the weight of contributing from the developer to whoever has to approve the PRs. This is my attempt to fix that.
+**The real problem is that most repositories have no standard for what they expect from code — regardless of where it came from.** No automated enforcement. No explicit quality contract. Just a maintainer reading diffs, one by one, making judgment calls that could have been policies.
+
+Vibe coding didn't create new bad contributors. It created a volume problem. It shifted the weight of quality from the person submitting the PR to the person approving it. And that doesn't scale.
+
+The bottleneck isn't AI. It's the absence of a defined, automated quality bar — and maintainers are paying the price.
 
 ## The Solution
 
 `CONTRIBUTING_LLM.md` is a document any open-source project can copy and use tomorrow.
 
-It defines three things:
+Instead of relying on maintainer intuition, it codifies the quality contract into three enforceable rules:
 
 - **Mandatory disclosure** — `Co-Authored-By` trailer in every AI-assisted commit
 - **Mandatory tests** — no new functionality without test coverage
 - **License compliance** — contributors are responsible for verifying AI output doesn't reproduce incompatible licensed code
 
 It also includes ready-to-use **GitHub Actions workflows** that enforce these rules automatically and block merges if they aren't met.
+
+The maintainer stops being the filter. The process becomes the filter.
 
 ## Usage
 
